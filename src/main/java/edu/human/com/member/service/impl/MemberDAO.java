@@ -21,11 +21,12 @@ public class MemberDAO extends EgovComAbstractMapper {
 	
 	public EmployerInfoVO viewMember(String emplyr_id) throws Exception {
 		//selectOne("쿼리ID","쿼리매개변수=파라미터=인자");
-		return selectOne("memberMapper.viewMember",emplyr_id);
+		return selectOne("memberMapper.viewMember", emplyr_id);
 	}
 	
-	public void deleteMember(String emplyr_id) throws Exception {
-		delete("memberMapper.deleteMember", emplyr_id);
+	public int deleteMember(String emplyr_id) throws Exception {
+		//affected된 row값이 반환 됨
+		return delete("memberMapper.deleteMember", emplyr_id);
 	}
 	
 	public void insertMember(EmployerInfoVO employerInfoVO) throws Exception {

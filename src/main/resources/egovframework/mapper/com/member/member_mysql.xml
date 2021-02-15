@@ -18,7 +18,7 @@ insert into lettnemplyrinfo (
 	PASSWORD,
 	EMPL_NO,
 	IHIDNUM,
-	SEXDSTN,
+	SEXDSTN_CODE,
 	BRTHDY,
 	FXNUM,
 	HOUSE_ADRES,
@@ -46,7 +46,7 @@ insert into lettnemplyrinfo (
 	#{PASSWORD},
 	#{EMPL_NO},
 	#{IHIDNUM},
-	#{SEXDSTN},
+	#{SEXDSTN_CODE},
 	#{BRTHDY},
 	#{FXNUM},
 	#{HOUSE_ADRES},
@@ -66,7 +66,7 @@ insert into lettnemplyrinfo (
 	#{EMPLYR_STTUS_CODE},
 	#{ESNTL_ID},
 	#{CRTFC_DN_VALUE},
-	#{SBSCRB_DE}
+	now()
 )
 </insert>
 
@@ -79,7 +79,7 @@ update lettnemplyrinfo set
 	</if>
 	EMPL_NO=#{EMPL_NO},
 	IHIDNUM=#{IHIDNUM},
-	SEXDSTN=#{SEXDSTN},
+	SEXDSTN_CODE=#{SEXDSTN_CODE},
 	BRTHDY=#{BRTHDY},
 	FXNUM=#{FXNUM},
 	HOUSE_ADRES=#{HOUSE_ADRES},
@@ -98,8 +98,7 @@ update lettnemplyrinfo set
 	PSTINST_CODE=#{PSTINST_CODE},
 	EMPLYR_STTUS_CODE=#{EMPLYR_STTUS_CODE},
 	ESNTL_ID=#{ESNTL_ID},
-	CRTFC_DN_VALUE=#{CRTFC_DN_VALUE},
-	SBSCRB_DE=#{SBSCRB_DE}
+	CRTFC_DN_VALUE=#{CRTFC_DN_VALUE}
 where EMPLYR_ID=#{EMPLYR_ID}
 </update>
 

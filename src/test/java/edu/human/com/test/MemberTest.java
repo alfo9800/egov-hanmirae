@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import edu.human.com.member.service.EmployerInfoVO;
 import edu.human.com.member.service.MemberService;
+import egovframework.let.utl.sim.service.EgovFileScrty;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations ={
@@ -28,6 +29,45 @@ public class MemberTest {
 	
 	@Inject
 	private MemberService memberService;
+	
+	@Test
+	public void deleteMember() throws Exception {
+		int result = memberService.deleteMember("user_3");
+		if(result > 0) {
+			System.out.println("정상적으로 삭제되었습니다.");
+		} else {
+			System.out.println("삭제된 값이 없습니다.");
+		}
+	}
+	
+	@Test
+	public void insertMember() throws Exception {
+		EmployerInfoVO memberVO = new EmployerInfoVO(); //고전 방식의 객체 생성이 필요함
+		//memberVO의 set으로 값을 입력한 이후 DB에 insert
+		//emplyr_id는 기본키 이기 때문에 중복허용하지 않도록 처리
+		List<EmployerInfoVO> memberList = memberService.selectMember();
+		memberVO.setEMPLYR_ID("user_" + memberList.size());
+		memberVO.setORGNZT_ID("ORGNZT_0000000000000"); //외래 키이기 때문
+		memberVO.setUSER_NM("사용자_" + memberList.size());
+		//암호화 작업(스프링시큐리티x ,egov전용 시큐리티 암호화("입력한 문자","입력한ID");
+		String secPassword = EgovFileScrty.encryptPassword("1234", memberVO.getEMPLYR_ID());
+		memberVO.setPASSWORD(secPassword);
+		memberVO.setEMAIL_ADRES("aka@aka.com");
+		memberVO.setPASSWORD_HINT("사는 곳은?"); //null체크 에러 해결
+		memberVO.setPASSWORD_CNSR("서울"); //암호힌트에 대한 답변
+		memberVO.setSEXDSTN_CODE("F");
+		memberVO.setHOUSE_ADRES("집주소");
+		memberVO.setGROUP_ID("GROUP_00000000000000"); //외래 키이기 때문에 부모테이블에 있는 값을 넣어야 함.
+		memberVO.setEMPLYR_STTUS_CODE("P"); //회원상태코드 P-활성, S-비활성
+		memberVO.setESNTL_ID("USRCNFRM_00000000000"); //고유ID이기 때문
+		memberService.insertMember(memberVO);
+	}
+	
+	@Test
+	public void viewMember() throws Exception {
+		EmployerInfoVO memberVO = memberService.viewMember("admin");
+		System.out.println("admin회원의 상세정보는 :" + memberVO.toString());
+	}
 	
 	@Test
 	public void selectMember() throws Exception {
