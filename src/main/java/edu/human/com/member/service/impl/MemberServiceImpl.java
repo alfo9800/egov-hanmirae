@@ -17,8 +17,32 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public List<EmployerInfoVO> selectMember() throws Exception {
-		//DAO클래스에서 호출
+		//DAO클래스에서 메서드 호출
 		return memberDAO.selectMember();
+	}
+
+	@Override
+	public EmployerInfoVO viewMember(String emplyr_id) throws Exception {
+		//DAO클래스에서 메서드 호출
+		return memberDAO.viewMember(emplyr_id);
+	}
+
+	@Override
+	public void deleteMember(String emplyr_id) throws Exception {
+		//DAO클래스에서 메서드 호출
+		memberDAO.delete(emplyr_id);
+	}
+
+	@Override
+	public void insertMember(EmployerInfoVO employerInfoVO) throws Exception {
+		//DAO클래스에서 메서드 호출
+		memberDAO.insertMember(employerInfoVO);
+	}
+
+	@Override
+	public void updateMember(EmployerInfoVO employerInfoVO) throws Exception {
+		//DAO클래스에서 메서드 호출
+		memberDAO.updateMember(employerInfoVO);
 	}
 
 }
