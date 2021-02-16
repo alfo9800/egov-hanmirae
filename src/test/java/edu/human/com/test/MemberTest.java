@@ -35,6 +35,7 @@ public class MemberTest {
 		EmployerInfoVO memberVO = new EmployerInfoVO();
 		memberVO.setEMPLYR_ID("user_2"); //수정할 고유ID값 지정
 		memberVO.setUSER_NM("사용자_2");
+		memberVO.setORGNZT_ID("ORGNZT_0000000000000"); //외래 키이기 때문
 		String secPassword = ""; //암호값이 공백이면, 쿼리에서 제외됨.
 		memberVO.setPASSWORD(secPassword);
 		memberVO.setEMAIL_ADRES(memberVO.getEMPLYR_ID() + "@aka.com");
@@ -44,13 +45,13 @@ public class MemberTest {
 		memberVO.setHOUSE_ADRES("집주소");
 		memberVO.setGROUP_ID("GROUP_00000000000000"); //외래 키이기 때문에 부모테이블에 있는 값을 넣어야 함.
 		memberVO.setEMPLYR_STTUS_CODE("P"); //회원상태코드 P-활성, S-비활성
-		memberVO.setESNTL_ID("USRCNFRM_00000000000"); //고유ID이기 때문
+		//memberVO.setESNTL_ID("USRCNFRM_00000000000"); //고유ID이기 때문 -> 중복되면 안됨.
 		memberService.updateMember(memberVO);
 	}
 	
 	@Test
 	public void deleteMember() throws Exception {
-		int result = memberService.deleteMember("user_3");
+		int result = memberService.deleteMember("user_2");
 		if(result > 0) {
 			System.out.println("정상적으로 삭제되었습니다.");
 		} else {
@@ -77,7 +78,7 @@ public class MemberTest {
 		memberVO.setHOUSE_ADRES("집주소");
 		memberVO.setGROUP_ID("GROUP_00000000000000"); //외래 키이기 때문에 부모테이블에 있는 값을 넣어야 함.
 		memberVO.setEMPLYR_STTUS_CODE("P"); //회원상태코드 P-활성, S-비활성
-		memberVO.setESNTL_ID("USRCNFRM_00000000000"); //고유ID이기 때문
+		memberVO.setESNTL_ID("USRCNFRM_" + memberList.size()); //고유ID이기 때문
 		memberService.insertMember(memberVO);
 	}
 	
