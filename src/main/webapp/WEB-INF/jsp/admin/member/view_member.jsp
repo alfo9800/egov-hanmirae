@@ -44,7 +44,7 @@
                   </div>
                   <div class="form-group">
                     <label for="PASSWORD">PASSWORD</label>
-                    <input type="password" class="form-control" name="PASSWORD" id="PASSWORD" placeholder="암호를 입력해주세요." required>
+                    <input type="password" class="form-control" name="PASSWORD" id="PASSWORD" placeholder="암호를 입력해주세요.">
                   </div>
                   <div class="form-group">
                     <label for="PASSWORD_HINT">PASSWORD_HINT</label>
@@ -114,8 +114,9 @@
           
           <!-- 버튼영역 시작 -->
             <div class="card-body">
-            	<a href="member_list.html" class="btn btn-primary float-right mr-1">LIST ALL</a>              	
-              	<button type="submit" class="btn btn-danger float-right mr-1">SUBMIT</button>
+            	<a href="<c:url value="/admin/member/list_member.do" />" class="btn btn-primary float-right mr-1">목록</a>              	
+              	<button type="submit" class="btn btn-info float-right mr-1">수정</button>
+              	<button type="button" class="btn btn-danger float-right mr-1">삭제</button>
               	<!-- a태그는 링크이동은 되지만, post값을 전송하지 못함. 그래서, button태그를 사용. -->
               </div>
           <!-- 버튼영역 끝 -->

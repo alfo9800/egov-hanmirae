@@ -78,7 +78,9 @@
 	                      <td>${memberVO.USER_NM}</td>
 	                      <td>${memberVO.EMAIL_ADRES}</td>
 	                      <td>${memberVO.EMPLYR_STTUS_CODE}</td>
-	                      <td>${memberVO.SBSCRB_DE}</td>
+	                      <td>
+	                      	<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${memberVO.SBSCRB_DE}" />	                      
+	                      </td>
 	                      <td><span class="badge bg-danger">${memberVO.GROUP_ID}</span></td>
 	                      <!-- 권한표시는 부트스트랩 뺏지 클래스 사용 -->
 	                    </tr>
