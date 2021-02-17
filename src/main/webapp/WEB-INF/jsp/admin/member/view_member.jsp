@@ -81,8 +81,14 @@
                   <div class="form-group">
 					<label for="EMPLYR_STTUS_CODE">EMPLYR_STTUS_CODE</label>
 					<select class="form-control" name="EMPLYR_STTUS_CODE" id="EMPLYR_STTUS_CODE">
+					<!-- 
 						<option value="P" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='P')?'selected':''}" /> >활성</option>
-						<option value="S" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='S')?'selected':''}" /> >비활성</option>
+						<option value="S" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='S')?'selected':''}" /> >비활성</option> 
+					-->
+					<c:forEach items="${codeMap}" var="detailCode" varStatus="cnt">
+						${detailCode} 확인
+						<%-- <option value="P" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='P')?'selected':''}" /> >활성</option> --%>
+					</c:forEach>
 					</select>                  
                   </div>
              	  <div class="form-group">
