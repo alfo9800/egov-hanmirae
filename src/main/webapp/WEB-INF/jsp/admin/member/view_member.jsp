@@ -78,25 +78,30 @@
                    <label for="ORGNZT_ID">ORGNZT_ID</label>
                    <input value="${memberVO.ORGNZT_ID}" type="text" class="form-control" name="ORGNZT_ID" id="ORGNZT_ID" placeholder="소속기관을 입력해주세요." required>
                   </div>
+                  
                   <div class="form-group">
 					<label for="EMPLYR_STTUS_CODE">EMPLYR_STTUS_CODE</label>
 					<select class="form-control" name="EMPLYR_STTUS_CODE" id="EMPLYR_STTUS_CODE">
-					<!-- 
-						<option value="P" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='P')?'selected':''}" /> >활성</option>
-						<option value="S" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='S')?'selected':''}" /> >비활성</option> 
-					-->
-					<c:forEach items="${codeMap}" var="detailCode" varStatus="cnt">
-						${detailCode} 확인
-						<%-- <option value="P" <c:out value="${(memberVO.EMPLYR_STTUS_CODE=='P')?'selected':''}" /> >활성</option> --%>
-					</c:forEach>
+						<c:forEach items="${codeMap}" var="sub">
+	                  		<option value="${sub.value.CODE}" <c:out value="${(memberVO.EMPLYR_STTUS_CODE==sub.value.CODE)?'selected':''}" />>${sub.value.CODE_NM}</option>
+	                  	</c:forEach>
 					</select>                  
                   </div>
+                  <!-- 위는 맵 자료형을 jstl에서 출력하기 -->
+                  <!-- codeMap자료=> {P={CODE=P, CODE_NM=활성 }, S={CODE=S, CODE_NM=비활성}} -->
+                 <!-- 
+                 <c:forEach items="${codeMap}" var="sub2">
+                 	codeMap의 밸류를 분리  ${sub2.key}
+                 </c:forEach>
+                  -->
+                  
              	  <div class="form-group">
 					<label for="GROUP_ID">GROUP_ID</label>
 					<select class="form-control" name="GROUP_ID" id="GROUP_ID">
-						<option value="" <c:out value="" />>ROLE_ADMIN</option>
-						<option value="">ROLE_USER</option>
-					</select>                  
+						<c:forEach items="${codeGroup}" var="sub">
+							<option value="${sub.value.GROUP_ID}" <c:out value="${(memberVO.GROUP_ID==sub.value.GROUP_ID)? 'selected':''}" /> >${sub.value.GROUP_NM}</option>
+						</c:forEach>
+					</select>   	               
                   </div>
                   <div class="form-group">
                    <label for="ESNTL_ID">ESNTL_ID</label>

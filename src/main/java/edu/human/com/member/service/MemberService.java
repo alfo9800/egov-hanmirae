@@ -12,4 +12,6 @@ public interface MemberService {
 	
 	//공통코드 맵타입 반환 받기
 	public Map<Object,Object> selectCodeMap(String code_id) throws Exception;
+	//권한그룹 맵타입 반환 받기
+	public Map<Object,Object> selectGroupMap() throws Exception;
 }

@@ -52,4 +52,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectCodeMap(code_id);
 	}
 
+	@Override
+	public Map<Object, Object> selectGroupMap() throws Exception {
+		//DAO클래스에서 메서드 호출
+		return memberDAO.selectGroupMap();
+	}
+
 }
