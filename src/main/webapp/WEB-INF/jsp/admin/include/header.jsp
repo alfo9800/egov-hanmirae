@@ -35,6 +35,12 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+<script> 
+if("${msg}"!="") { //redirectAttributes로 컨트롤러에서 보내온 값을 출력
+	alert("${msg}에 성공하였습니다.");
+}
+</script>
+
   <!-- 관리자화면 최상단 아이콘 2개 Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
