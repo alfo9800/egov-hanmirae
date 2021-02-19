@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.human.com.common.EgovComAbstractMapper;
 import edu.human.com.member.service.EmployerInfoVO;
+import edu.human.com.util.PageVO;
 
 /**
  * egov에서 DAO는 sqlSession 템플릿을 바로 접근하지 않고,
@@ -16,7 +17,7 @@ import edu.human.com.member.service.EmployerInfoVO;
  */
 @Repository
 public class MemberDAO extends EgovComAbstractMapper {
-	public List<EmployerInfoVO> selectMember() throws Exception {		 
+	public List<EmployerInfoVO> selectMember(PageVO pageVO) throws Exception {		 
 		return selectList("memberMapper.selectMember");
 	}
 	

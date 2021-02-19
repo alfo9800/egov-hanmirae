@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import edu.human.com.member.service.EmployerInfoVO;
 import edu.human.com.member.service.MemberService;
+import edu.human.com.util.PageVO;
 import egovframework.let.utl.sim.service.EgovFileScrty;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -64,7 +65,8 @@ public class MemberTest {
 		EmployerInfoVO memberVO = new EmployerInfoVO(); //고전 방식의 객체 생성이 필요함
 		//memberVO의 set으로 값을 입력한 이후 DB에 insert
 		//emplyr_id는 기본키 이기 때문에 중복허용하지 않도록 처리
-		List<EmployerInfoVO> memberList = memberService.selectMember();
+		PageVO pageVO = new PageVO();
+		List<EmployerInfoVO> memberList = memberService.selectMember(pageVO);
 		memberVO.setEMPLYR_ID("user_" + memberList.size()+1);
 		memberVO.setORGNZT_ID("ORGNZT_0000000000000"); //외래 키이기 때문
 		memberVO.setUSER_NM("사용자_" + memberList.size());
@@ -90,7 +92,8 @@ public class MemberTest {
 	
 	@Test
 	public void selectMember() throws Exception {
-		List<EmployerInfoVO> memberList = memberService.selectMember();
+		PageVO pageVO = new PageVO();
+		List<EmployerInfoVO> memberList = memberService.selectMember(pageVO);
 		for(EmployerInfoVO member:memberList) {
 			System.out.println("현재 등록된 회원은 :" + member.toString());
 		}

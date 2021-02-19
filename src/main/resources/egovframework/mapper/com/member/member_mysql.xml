@@ -33,6 +33,7 @@ where
 	</if>
 </if> 
 order by sbscrb_de desc
+LIMIT #{queryStartNo},#{queryPerPageNum}
 </select>
 
 <select id="viewMember" resultType="edu.human.com.member.service.EmployerInfoVO">
